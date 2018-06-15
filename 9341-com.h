@@ -21,8 +21,31 @@ class n3n_ILI9341
 	void writeCommand(uint8_t com);
     void spiWrite(uint8_t b);
 	void spiWrite16(uint16_t b);
+	void spiWriteN(uint8_t b[], uint8_t n);
+	void spiBufferN(uint8_t b[16], uint8_t n);
+	void spiBufferN2(int n);
 	uint8_t spiRead(uint8_t b);	
 	void TFTInit(void);
+	
+	uint8_t tinyfont_getind(char c);
+	int tinyfont(uint8_t ind);
+	uint8_t tinyfont_Sbuff(char buff[], uint8_t start, uint8_t fsize, uint8_t len, uint16_t wid, uint8_t row);
+	uint8_t tinyfont_Scalc(uint8_t fsize, uint16_t wid);
+	void tinyfont_Sbuff_GFX(uint8_t clen, uint8_t fsize, uint8_t fsize_h, uint16_t fcol, uint16_t bcol, uint16_t wid);
+
+	void setAddrWin(int16_t x0, int16_t y0, int16_t x1, int16_t y1);	
+	void fillRect(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint16_t color);
+	void drawLine(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1, uint16_t color);
+
+        uint16_t s1(uint16_t xA, int16_t xB, uint8_t xN);
+	uint16_t s2(uint16_t xA, uint16_t xB, uint16_t xC, uint8_t xN);
+	
+	void drawCurve(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, uint16_t color);
+	
+	
+	uint8_t _buffN[16]; //2 byte per pixel?
+	uint8_t _buffS[32]; //2 char per byte
+	
 
 //  Morse(int pin);
 //    void dot();
@@ -148,14 +171,15 @@ class n3n_ILI9341
 
 #endif
 
+
 //n3n_ILI9341::
 
 /*
 class n3n_ILI9341 : public n3n_GFX {
-    protected:
 
     public:
-	
+  int n3n_ILI9341::tinyfont_getind(char c){	
+}
 }
 
 */
